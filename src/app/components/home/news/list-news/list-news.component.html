@@ -1,0 +1,5 @@
+<div class="w-full bg-transparent flex justify-end">
+    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/news']"></app-btn-add>
+</div>
+
+<app-card-news class=" flex flex-wrap " [new$]="news$"></app-card-news>

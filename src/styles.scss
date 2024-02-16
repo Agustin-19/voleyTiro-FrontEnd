@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.sjd-register-form{
+    @apply w-10/12 mx-auto;
+}
+
+.sjd-button-primary{
+    @apply text-white bg-red-500 py-3 rounded-md hover:bg-red-700 transition-all
+}
+.btn-add{
+    @apply border text-green-500 border-green-500
+}
+
+.btn-navbar{
+    @apply hover:bg-red-700 hover:text-black hover:border-black bg-red-800 border
+}
+
+.tab-active{
+    border-color: rgb(3, 148, 148);
+    color: rgb(3, 148, 148);
+}
+.tab-text
+{
+    color:rgb(3, 148, 148);
+}
+
+.form-input{
+    @apply  rounded-lg  daisy-input daisy-input-bordered hover:border-2 hover:border-blue-600 focus:border-0 focus:border-blue-600 focus:outline-blue-600
+}
+
+.body {
+    background-color: #14111C;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.border-card{
+    @apply  border-b-2 border-base-300 sm:border-hidden 
+}
+
+.select-propio{
+    @apply  text-black rounded-md disabled:bg-slate-700
+}
+
+.input-img{
+    @apply text-black border-black hover:text-blue-300 hover:border-blue-300 hover:bg-gray-500
+}
+
+option { color: black; background-color: white; border: none; }
+option:hover { color: black; background-color: gray; }

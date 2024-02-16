@@ -1,0 +1,14 @@
+<div *ngFor="let noti of new$" (click)="verNoticia(noti._id)" 
+    class="block m-2 p-2 max-w-[20rem] border-b-2 border-b-black shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat">
+        <figure class="h-52 flex items-center justify-center">
+            <img src="{{noti.banner_url}}" alt="Shoes" class="object-cover w-full h-full" />
+        </figure>
+    </div>
+    <div class="mt-2 px-3">
+        <h2 class="daisy-card-title">{{noti.titulo}}</h2>
+        <p class="text-base text-black">
+            {{ noti.contenido | slice:0:150}}...
+        </p>
+    </div>
+</div>

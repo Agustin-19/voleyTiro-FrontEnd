@@ -1,0 +1,14 @@
+<div class=" w-full p-5 lg:p-10 sjd-reg-bg">
+    <div class=" flex flex-col h-screen items-center justify-center overflow-hidden rounded-md">
+        <div class=" bg-white flex flex-col py-10 shadow-lg w-full md:w-10/12 lg:w-6/12 xl:w-[550px] rounded-md h-[700px]">
+            <form #formulario="ngForm" (sumit)="onSubmit(formulario)" class="grid grid-cols-2 gap-2 sjd-register-form" >
+                <input class="col-span-2" required [(ngModel)]="usuario.username" name="nombre" type="text" placeholder="Nombre">
+                <input class="col-span-2" required [(ngModel)]="usuario.userlastname" name="apellido" type="text" placeholder="Apellido">
+                <input class="col-span-2" required [(ngModel)]="usuario.email" name="email" type="email" placeholder="Correo electrónico">
+                <input class="col-span-2" required [(ngModel)]="usuario.password" name="password" type="password" placeholder="Contraseña">
+                <input class="col-span-2" required [(ngModel)]="usuario.passwordconf" name="passwordconf" type="password" placeholder="Confirmar contraseña">
+                <button class="sjd-button-primary col-span-2" (click)="onSubmit(formulario)" type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>

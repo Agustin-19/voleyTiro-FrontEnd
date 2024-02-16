@@ -1,0 +1,17 @@
+<div *ngIf="news$" class="flex justify-center m-5">
+    <div class="daisy-card w-10/12 bg-base-100  shadow-xl">
+        <div class="daisy-card-body">
+            <h2  class="daisy-card-title text-center"> {{news$.titulo}} </h2>
+        </div>
+        <figure class="px-8 py-4"><img [src]="news$.banner_url" alt="Shoes" /></figure>
+        <div class="daisy-card-body -my-4" *ngFor="let parrafo of obtenerParrafos(news$.contenido)">
+            <p> {{parrafo}} </p>
+            <!-- Insertar la imagen después del primer párrafo -->
+            <ng-container *ngIf="parrafo === obtenerParrafos(news$.contenido)[1] && news$.img_url">
+                <img class="m-4" [src]="news$.img_url" alt="Imagen de la noticia">
+            </ng-container>
+        </div>
+        <div class="m-3 daisy-divider daisy-divider-neutral "></div> 
+        <p class=" text-end p-2 text-xs"><strong> Fecha de publicacion {{news$.fechaPublicacion}} </strong></p>
+    </div>
+</div>

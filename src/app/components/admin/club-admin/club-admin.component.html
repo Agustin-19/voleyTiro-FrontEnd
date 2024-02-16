@@ -1,0 +1,86 @@
+<form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-md mx-5 ">
+    <div class="mt-6 mb-3 py-4 px-6 bg-slate-700 border rounded-t-2xl shadow">
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+                <span class="daisy-label-text text-white">Titulo:</span>
+            </label>
+            <input name="nombre" required [(ngModel)]="club.nombre" type="text" placeholder="Nombre"
+                class="form-input m-2" (change)="emitClubData($event)">
+
+                    <!--Sede del Club-->
+            <input class="form-input m-2" required [(ngModel)]="provincia" name="provincia" type="text" 
+                placeholder="Provincia">
+
+            <input class="form-input m-2" required [(ngModel)]="localidad" type="text" name="localidad"
+                placeholder="Localidad">
+
+            <input class="form-input m-2" required [(ngModel)]="direccion" name="direccion" type="address"
+                placeholder="Dirección (ej: Francisco Angeloni 123)">
+            
+        </div>
+
+        <div class="m-2  text-center flex bg-white rounded-lg justify-between " >
+            <p class="my-2 mx-2"><span class=" text-gray-600 text-lg">Elegir las categorias:</span></p>
+            <div class="block m-1" >
+            
+                <select  data-te-select-init multiple  *ngIf="categoriaFem" name="categoriaFem" [(ngModel)]="seleccionados"
+                multiple (ngModelChange)="enviarCategoria($event)"
+                class="hidden">
+                </select>
+
+                <select data-te-select-init multiple  name="categoriaFem" [(ngModel)]="seleccionados"
+                (ngModelChange)="enviarCategoria($event)" 
+                class="w-10/12 ">
+                    <!-- <option value="1">One</option> -->
+                    <option [value]="categoria._id" 
+                    *ngFor="let categoria of categoriaFem" >{{categoria.genero}}: {{categoria.parent}}</option>
+                </select>
+                <label data-te-select-label-ref class="text-black">Elegir</label>
+                
+            </div>
+            <p class="my-2 mx-2"><span class=" text-gray-600 text-lg">Elegir los colores:</span></p>
+            <div class="block m-1" >
+
+                <select data-te-select-init multiple  name="colores" [(ngModel)]="colores"
+                (ngModelChange)="elegirColores($event)" 
+                class="w-10/12  select-propio">
+                    <!-- <option value="1">One</option> -->
+                    <option  value="Blanco" >Blanco</option>
+                    <option  value="Negro" >Negro</option>
+                    <option  value="Rojo" > Rojo</option>
+                    <option  value="Azul" >Azul</option>
+                    <option  value="Verde" >Verde</option>
+                    <option  value="Amarillo" >Amarillo</option>
+                    <option  value="Naranja" >Naranja</option>
+                    <option  value="Rosa" >Rosa</option>
+                    <option  value="Celeste" >Celeste</option>
+                </select>
+                <label data-te-select-label-ref class="text-black">Color</label>
+
+            </div>
+        </div>
+        <input type="file" (change)="uploadImage($event)" accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2" />
+    </div>
+            
+        
+
+    <!-- movile button  -->
+    <div class="p-4 bg-slate-700 border rounded-b-2xl w-full shadow justify-center flex">
+        <button type="submit" class="flex p-2 border text-green-300 border-green-300 mx-1 rounded-md h-10">
+            <span class="hidden md:flex">GUARDAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+        </button>
+        <button type="submit" class="flex p-2 border text-red-300 border-red-300 mx-1 rounded-md h-10"
+            [routerLink]="['/home/clubs']">
+            <span class="hidden md:flex">CANCELAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+</form>

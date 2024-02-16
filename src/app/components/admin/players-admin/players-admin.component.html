@@ -1,0 +1,82 @@
+
+
+    <form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-md body mx-5  mb-9">
+        <div class="mt-6 mb-3 py-4 px-6 bg-slate-700 border rounded-t-2xl shadow">
+            <label class="daisy-label">
+                <span class="daisy-label-text mx-3 text-lg text-white">Datos del Jugador</span>
+            </label>
+            <div class="daisy-form-control block md:grid grid-cols-2 gap-1 w-full justify-between">
+                <input name="nombre" required [(ngModel)]="player.nombre" type="text" placeholder="Nombre"
+                    class="form-input m-2">
+
+                <input name="apellido" required [(ngModel)]="player.apellido" type="text" placeholder="Apellido"
+                    class="form-input m-2">
+
+                <input name="dni" required [(ngModel)]="player.dni" type="number" placeholder="DNI"
+                    class="form-input m-2">
+
+                <input class="form-input m-2" required [(ngModel)]="provincia" name="provincia" type="text"
+                    placeholder="Provincia">
+
+                <input class="form-input m-2" required [(ngModel)]="localidad" type="text" name="localidad"
+                    placeholder="Localidad">
+
+                <!-- <input class="form-input m-2" required [(ngModel)]="player.direccion[0].direccion" name="direccion" type="address"
+                    placeholder="Dirección (ej: 9 de Julio 123)"> -->
+
+                <input class="form-input m-2" required [(ngModel)]="player.fecha_nacimiento" name="fecha" type="date"
+                    placeholder="Fecha de nacimiento">
+
+                <div class="m-2 text-center flex w-full bg-white rounded-lg ">
+                    <div class="p-1 flex justify-center gap-1">
+
+                        <p class="my-2"><span class="mx-1 text-gray-600 text-base">Genero:</span></p>
+                        <select name="categoriaGen" [(ngModel)]="player.genero"
+                            (ngModelChange)="cargarCategoria($event)" 
+                            class="w-10/12 select-propio">
+                            <option disabled selected>Genero</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Mixto">Mixto</option>
+                        </select>
+                    
+                        <select data-te-select-init multiple *ngIf="category" name="categoriaFem"
+                            [(ngModel)]="seleccionados" multiple class="hidden">
+                        </select>
+                
+                        <p class="my-2"><span class="mx-1 text-gray-600 text-base">Categoria:</span></p>
+                        <select name="category" [(ngModel)]="seleccionados"
+                            (ngModelChange)="traerClubs($event)" 
+                            class="w-10/12 select-propio" disabled id="selectCat">
+                            <option disabled selected>Categoria</option>
+                            <option [value]="categoria['_id']" *ngFor="let categoria of category">{{categoria.parent}}
+                            </option>
+                        </select>
+
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <!-- movile button  -->
+        <div class="p-4 mb-6 bg-slate-700 border rounded-b-2xl w-full shadow justify-center flex">
+            <button type="submit" class="flex p-2 border text-green-300 border-green-300 mx-1 rounded-md h-10">
+                <span class="hidden md:flex">GUARDAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+            </button>
+            <button type="submit" class="flex p-2 border text-red-300 border-red-300 mx-1 rounded-md h-10"
+                [routerLink]="['/home/players']">
+                <span class="hidden md:flex">CANCELAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </form>

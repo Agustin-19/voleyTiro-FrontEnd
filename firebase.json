@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "dist/voley-tiro",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "storage": {
+    "rules": "dist/voley-tiro/index.html"
+  }
+}

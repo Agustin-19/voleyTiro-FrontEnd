@@ -1,0 +1,21 @@
+<div class="w-full h-screen flex flex-col items-center justify-center overflow-hidden sjd-login-bg">
+    <div class="bg-white py-10 shadow-lg w-11/12 md:w-10/12 lg:w-6/12 xl:w-[550px] rounded-md">
+        <div [routerLink]="['/home']" class="flex flex-row items-center justify-center mb-4 cursor-pointer">
+            <!-- <img class="h-16 md:h-20 float-left mr-2 md:mr-4" src="assets/logo/sjdlogo.png" alt="logo"> -->
+            <!-- <img class="h-16 md:h-20 float-left cursor-pointer" src="assets/img/express/ExpressPequeño.png" alt="logo"> -->
+            <!-- <span class="text-4xl md:text-5xl italic text-gray-800 cursor-pointer"><span class="text-red-700">xpress</span></span> -->
+        </div>
+        <h1 class="text-center my-6">Inicia Sesión</h1>
+        <!-- Formulario de login -->
+        <form #formulario="ngForm" (submit)="onSubmit(formulario)" class="grid grid-cols-1 sjd-register-form">
+            <input required [(ngModel)]="name" name="email" type="email" placeholder="Correo electrónico">
+            <input required [(ngModel)]="password" name="password" type="password" placeholder="Contraseña">
+            <button class="sjd-button-primary" type="submit">Iniciar Sesión</button>
+            <div class="flex justify-center mt-4 flex-col items-center gap-6">
+                <span [routerLink]="['/register']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">¿No tienes una cuenta?</span>
+                <!-- <span [routerLink]="['/home']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">Ir al inicio</span>
+                <span [routerLink]="['/login/forgot-password']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">¿Olvidaste tu contraseña?</span> -->
+            </div>
+        </form> 
+    </div>
+</div>

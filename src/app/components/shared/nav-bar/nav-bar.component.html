@@ -1,0 +1,43 @@
+<div class="daisy-navbar text-white bg-transparent align-bottom m-0 p-0">
+    
+    <div class="flex align-bottom justify-end lg:justify-center m-0 w-full mt-5  bg-gray-800 h-10 ">
+        <ul class="daisy-menu daisy-menu-horizontal gap-1 px-1">
+            <li [routerLink]="['home/start']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    INICIO
+                </a>
+            </li>
+            <li [routerLink]="['home/games']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    PARTIDOS
+                </a>
+            </li>
+            <li [routerLink]="['home/players']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    JUGADORES
+                </a>
+            </li>
+            <li [routerLink]="['home/news']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    NOVEDADES
+                </a>
+            </li>
+            <li [routerLink]="['home/inst']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    INSTITUCIONAL
+                </a>
+            </li>
+            <li *ngIf="haySesion && esAdministrador" 
+            [routerLink]="['/home/clubs']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    CLUBES
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="absolute flex-1 -mt-24 z-40" >
+    <img src="../../../../assets/img/icons/icon.png" 
+    class="block max-h-40 object-cover" 
+    alt="Wild Landscape" [routerLink]="['home/start']"/>
+</div>
