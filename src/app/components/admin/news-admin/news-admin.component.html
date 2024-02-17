@@ -4,27 +4,32 @@
             <input name="titulo" required [(ngModel)]="news.titulo" type="text" placeholder="Titulo"
                 class="form-input  m-2" >
 
-            <div class="block md:flex w-full justify-between">
+            <div class="block md:flex w-full gap-4 ">
 
-                <div class="m-2 p-2 text-center w-full flex bg-white rounded-lg justify-between " >
-                    <p class=""><span class=" text-gray-600 text-lg">Imagen principal:</span></p>
-                    <div class="block m-1 align-middle" >
+                <div class="m-2 p-2 w-full block  rounded-lg " >
+                    <div class="m-1 px-2" >
                         <label for="banner" 
                         class="border p-2 rounded-lg text-lg input-img"
-                        >Subir</label>
+                        >Imagen Principal</label>
                         <input type="file" (change)="bannerImage($event)" id="banner" 
                         accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2 hidden" />
                     </div>
+                    <figure *ngIf="news.banner_url" class=" p-2">
+                        <img [src]="news.banner_url"alt="banner" class="rounded-md  max-h-[100px] " />
+                    </figure> 
+        
                 </div>
-                <div class="m-2 p-2 text-center w-full flex bg-white rounded-lg justify-between " >
-                    <p class=""><span class=" text-gray-600 text-lg">Imagen secundaria:</span></p>
-                    <div class="block m-1 align-middle" >
+                <div class="m-2 p-2  w-full block rounded-lg " >
+                    <div class="m-1 px-2 " >
                         <label for="img" 
                         class="border p-2 rounded-lg text-lg input-img "
-                        >Subir</label>
+                        >Segunda Imagen</label>
                         <input type="file" (change)="imageSecundaria($event)" id="img" 
                         accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2 hidden" />
                     </div>
+                    <figure *ngIf="news.img_url" class=" p-2">
+                        <img [src]="news.img_url" alt="img" class="rounded-md  max-h-[100px] " />
+                    </figure> 
                 </div>
             </div>
         
@@ -32,15 +37,6 @@
             class="form-input m-2 daisy-textarea daisy-textarea-ghost"  
             placeholder="Contenido">
             </textarea>  
-        </div>
-        <div class="m-2 p-2 gap-2 flex ">
-            <figure *ngIf="news.banner_url" class=" p-2">
-                <img [src]="news.banner_url" alt="banner" class="rounded-md  max-h-[150px] " />
-            </figure> 
-
-            <figure *ngIf="news.img_url" class=" p-2">
-                <img [src]="news.img_url" alt="img" class="rounded-md  max-h-[150px] " />
-            </figure> 
         </div>
     </div>
         

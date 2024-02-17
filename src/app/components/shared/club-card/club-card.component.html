@@ -1,0 +1,29 @@
+<div *ngFor="let club of clubs" class="m-5 rounded-xl" >
+    <div class="daisy-card bg-black shadow-xl  grid grid-cols-3 md:grid-cols-4 mb-3 p-1 md:p-0">
+        <div class="daisy-card-body bg-opacity-50 col-start-2 rounded-xl bg-black text-white text-left ">
+            <h2 class="text-2xl font-semibold">{{club.nombre}}</h2>
+            <label *ngIf="haySesion && esAdministrador"  
+                (click)="editar(club._id)"
+                class="input-img border py-2 text-center rounded-lg ">
+                Editar
+            </label>
+        </div>
+        <div class="daisy-card-body bg-opacity-50 col-start-3 rounded-xl bg-black text-white ">
+            <div class="block text-left">
+                <p class="text-lg text-gray-400">Categorias:</p>
+                <p *ngFor="let category of club.categorias">
+                    {{category.genero}} {{category.parent}}
+                </p>
+            </div>
+        </div>
+        <div class="daisy-card-body bg-opacity-50 rounded-xl col-start-4 bg-black text-white text-left ">
+            <div class="flex" >
+                <p>Colores:</p>
+                <p *ngFor="let color of club.colores">{{color}}</p>
+            </div>
+            <p >Direc: {{club.sede[0].direccion}},  {{club.sede[0].localidad}}.</p>
+        </div>
+        <figure class="col-start-1 row-start-1 p-2"><img [src]="club.perfil_imagen_url" alt="Shoes" class="rounded-md  max-h-[150px] " />
+        </figure> 
+    </div>
+</div>

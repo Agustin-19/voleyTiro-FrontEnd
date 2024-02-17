@@ -1,4 +1,4 @@
-<form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-md mx-5 ">
+<form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-3xl mx-5 ">
     <div class="mt-6 mb-3 py-4 px-6 bg-slate-700 border rounded-t-2xl shadow">
         <div class="daisy-form-control w-full">
             <label class="daisy-label">
@@ -7,8 +7,8 @@
             <input name="nombre" required [(ngModel)]="club.nombre" type="text" placeholder="Nombre"
                 class="form-input m-2" (change)="emitClubData($event)">
 
-                    <!--Sede del Club-->
-            <input class="form-input m-2" required [(ngModel)]="provincia" name="provincia" type="text" 
+            <!--Sede del Club-->
+            <input class="form-input m-2" required [(ngModel)]="provincia" name="provincia" type="text"
                 placeholder="Provincia">
 
             <input class="form-input m-2" required [(ngModel)]="localidad" type="text" name="localidad"
@@ -16,53 +16,63 @@
 
             <input class="form-input m-2" required [(ngModel)]="direccion" name="direccion" type="address"
                 placeholder="Dirección (ej: Francisco Angeloni 123)">
-            
+
         </div>
 
-        <div class="m-2  text-center flex bg-white rounded-lg justify-between " >
+        <div class="m-2  text-center flex bg-white rounded-lg justify-between ">
             <p class="my-2 mx-2"><span class=" text-gray-600 text-lg">Elegir las categorias:</span></p>
-            <div class="block m-1" >
-            
-                <select  data-te-select-init multiple  *ngIf="categoriaFem" name="categoriaFem" [(ngModel)]="seleccionados"
-                multiple (ngModelChange)="enviarCategoria($event)"
-                class="hidden">
+            <div class="block m-1">
+
+                <select data-te-select-init multiple *ngIf="categoriaFem" name="categoriaFem"
+                    [(ngModel)]="seleccionados" multiple (ngModelChange)="enviarCategoria($event)" class="hidden">
                 </select>
 
-                <select data-te-select-init multiple  name="categoriaFem" [(ngModel)]="seleccionados"
-                (ngModelChange)="enviarCategoria($event)" 
-                class="w-10/12 ">
+                <select data-te-select-init multiple data-te-select-placeholder="Elegir categoria"
+                    name="categoriaFem" [(ngModel)]="seleccionados"
+                    (ngModelChange)="enviarCategoria($event)" class="w-10/12 ">
                     <!-- <option value="1">One</option> -->
-                    <option [value]="categoria._id" 
-                    *ngFor="let categoria of categoriaFem" >{{categoria.genero}}: {{categoria.parent}}</option>
+                    <option [value]="categoria._id" *ngFor="let categoria of categoriaFem">{{categoria.genero}}:
+                        {{categoria.parent}}</option>
                 </select>
-                <label data-te-select-label-ref class="text-black">Elegir</label>
-                
+                <!-- <label data-te-select-label-ref class="text-black">Elegir</label> -->
+
+
             </div>
             <p class="my-2 mx-2"><span class=" text-gray-600 text-lg">Elegir los colores:</span></p>
-            <div class="block m-1" >
+            <div class="block m-1">
 
-                <select data-te-select-init multiple  name="colores" [(ngModel)]="colores"
-                (ngModelChange)="elegirColores($event)" 
-                class="w-10/12  select-propio">
+                <select data-te-select-init multiple name="colores" [(ngModel)]="colores"
+                    (ngModelChange)="elegirColores($event)" class="w-10/12  select-propio">
                     <!-- <option value="1">One</option> -->
-                    <option  value="Blanco" >Blanco</option>
-                    <option  value="Negro" >Negro</option>
-                    <option  value="Rojo" > Rojo</option>
-                    <option  value="Azul" >Azul</option>
-                    <option  value="Verde" >Verde</option>
-                    <option  value="Amarillo" >Amarillo</option>
-                    <option  value="Naranja" >Naranja</option>
-                    <option  value="Rosa" >Rosa</option>
-                    <option  value="Celeste" >Celeste</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Rojo"> Rojo</option>
+                    <option value="Azul">Azul</option>
+                    <option value="Verde">Verde</option>
+                    <option value="Amarillo">Amarillo</option>
+                    <option value="Naranja">Naranja</option>
+                    <option value="Rosa">Rosa</option>
+                    <option value="Celeste">Celeste</option>
                 </select>
                 <label data-te-select-label-ref class="text-black">Color</label>
 
             </div>
         </div>
-        <input type="file" (change)="uploadImage($event)" accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2" />
+        <div class="m-2 mt  text-center flex align-middl rounded-lg gap-4 max-h-12" >
+            <div class="block m-1 align-middle" >
+                <label for="escudo" 
+                class="p-2 border rounded-lg text-lg input-img " 
+                >Subir escudo</label>
+                <input type="file" (change)="uploadImage($event)" id="escudo" 
+                accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2 hidden" />
+            </div>
+            <figure *ngIf="club.perfil_imagen_url" class="-m-4 p-0 max-h-11">
+                <img [src]="club.perfil_imagen_url" alt="banner" class="rounded-md  max-h-20  " />
+            </figure> 
+        </div>
     </div>
-            
-        
+
+
 
     <!-- movile button  -->
     <div class="p-4 bg-slate-700 border rounded-b-2xl w-full shadow justify-center flex">

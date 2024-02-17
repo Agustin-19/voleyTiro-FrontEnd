@@ -16,13 +16,35 @@ const ADMIN_ROUTES : Routes = [
     children:[
       {
         path:'club',
-        component: ClubAdminComponent,
-        data:{ title: 'Equipo'},
+        children: [
+          {path:'', redirectTo: 'forms', pathMatch: 'full'},
+          {
+            path: 'forms',
+            component: ClubAdminComponent,
+            data: {title: 'Agregar'},
+          },
+          {
+            path: 'forms/:clubId',
+            component: ClubAdminComponent,
+            data: {title: 'Editar'},
+          }
+        ]
       },
       {
         path: 'game',
-        component: GamesAdminComponent,
-        data:{ title: 'Partido'},
+        children: [
+          {path:'', redirectTo: 'forms', pathMatch: 'full'},
+          {
+            path: 'forms',
+            component: GamesAdminComponent,
+            data: {title: 'Agregar'}
+          },
+          {
+            path: 'forms/:partidoId',
+            component: GamesAdminComponent,
+            data: {title: 'Editar'}
+          }
+        ]
       },
       {
         path: 'news',
@@ -31,13 +53,35 @@ const ADMIN_ROUTES : Routes = [
       },
       {
         path: 'player',
-        component: PlayersAdminComponent,
-        data: {title: 'Jugador'},
+        children: [
+          {path:'', redirectTo: 'forms', pathMatch: 'full'},
+          {
+            path: 'forms',
+            component: PlayersAdminComponent,
+            data: {title: 'Agregar'}
+          },
+          {
+            path: 'forms/:playerId',
+            component: PlayersAdminComponent,
+            data: {title: 'Editar'}
+          }
+        ]
       },
       {
         path: 'publicity',
-        component: PublicityAdminComponent,
-        data: { title: 'Publicidad'},
+        children: [
+          {path:'', redirectTo: 'forms', pathMatch: 'full'},
+          {
+            path: 'forms',
+            component: PublicityAdminComponent,
+            data: {title: 'Agregar'},
+          },
+          {
+            path: 'forms/:publiId',
+            component: PublicityAdminComponent,
+            data: {title: 'Editar'}
+          }
+        ]
       },
       {
         path: 'timetable',

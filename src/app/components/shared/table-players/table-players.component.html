@@ -1,0 +1,35 @@
+<div class="overflow-x-auto bg-gray-700">
+    <table class="daisy-table daisy-table-xs text-white">
+        <thead>
+            <tr class="text-gray-400">
+                <th class="text-sm">Nombre completo</th>
+                <th class="text-sm">DNI</th>
+                <th class="text-sm">Genero</th>
+                <th class="text-sm">Categoria</th>
+                <th class="text-sm">Localidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players" class="text-white text-base">
+                <td class="text-sm">{{player.apellido}} {{player.nombre}}</td>
+                <td class="text-sm">{{player.dni}}</td>
+                <td class="text-sm">{{player.genero}}</td>
+                <td class="text-sm">{{player.category.parent}} </td>
+                <td class="text-sm"> {{player.direccion[0].localidad}} </td>
+                <button *ngIf="haySesion && esAdministrador" (click)="editar(player._id)" 
+                class="m-2 justify-center align-middle hover:text-blue-300">
+                    <p> Editar </p>
+                </button>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="text-gray-400 ">
+                <th class="text-sm">Nombre completo</th>
+                <th class="text-sm">DNI</th>
+                <th class="text-sm">Genero</th>
+                <th class="text-sm">Categoria</th>
+                <th class="text-sm">Localidad</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

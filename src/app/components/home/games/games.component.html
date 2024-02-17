@@ -1,1 +1,43 @@
-<p>games works!</p>
+<div class="fixed w-10/12 bg-transparent flex -m-7 justify-end">
+    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/game']"></app-btn-add>
+</div>
+<div class=" text-base text-white w-full text-center mb-2 px-4">
+    <div class="grid grid-cols-1 gap-1 md:grid-cols-2">
+        <div class="m-2 text-center flex w-full bg-white rounded-lg">
+            <div class="flex m-1 gap-1 justify-between ">
+                
+                <p class="my-2"><span class="mx-4 align-middle text-black text-base">Genero: </span></p>
+                <select  name="categoriaGen" [(ngModel)]="selecGen" 
+                    (ngModelChange)="cargarCategory($event)" 
+                    class="w-10/12 select-propio ">
+                    <option disabled selected>Genero </option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Mixto">Mixto</option>
+                </select>
+
+                <select  multiple *ngIf="category" name="categoriaFem"
+                    [(ngModel)]="seleccionados" multiple class="hidden">
+                </select>
+                
+                <p class="my-2"><span class="mx-4 align-middle text-black text-base">Categoria: </span></p>
+                <select  name="category" [(ngModel)]="seleccionados"
+                    (ngModelChange)="Clasificacion($event)" 
+                    class="w-10/12 select-propio " id="miSelect" disabled>
+                    <option disabled selected>Categoria</option>
+                    <option [value]="categoria['_id']" *ngFor="let categoria of category">
+                        {{categoria.parent}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-2 text-center justify-center align-middle ">
+    <p class="p-2 text-warning-100 text-lg"> Lista de juegos </p>
+    <div class="flex bg-base-300 mb-2 justify-around h-full px-8">
+        <p>LOCAL</p>
+        <p>VISITANTE</p>
+    </div>
+    <app-game-card [gameDatos]="gameDatos"></app-game-card>
+</div>

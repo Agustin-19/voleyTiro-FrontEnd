@@ -1,3 +1,6 @@
-<div class="w-full bg-transparent flex justify-end">
-    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/club']"></app-btn-add>
+<div class="fixed w-11/12 bg-transparent -m-7 flex justify-end z-10">
+    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/club/forms']"></app-btn-add>
+</div>
+<div class="mt-5">
+    <app-club-card [clubs]="club$"></app-club-card>
 </div>

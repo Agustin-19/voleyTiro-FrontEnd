@@ -1,5 +1,29 @@
-<div class="w-full bg-transparent flex justify-end">
+<div class="fixed w-10/12 bg-transparent flex -m-7 justify-end z-10">
     <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/news']"></app-btn-add>
 </div>
 
-<app-card-news class=" flex flex-wrap " [new$]="news$"></app-card-news>
+<div class=" lg:w-4/5 lg:float-left">
+    <app-card-news class=" flex flex-wrap " [new$]="news$"></app-card-news>
+</div>
+
+<!-- PUBLICIDADES -->
+<div class="block lg:w-1/5 lg:float-right">
+    <app-auspice-card class="flex-1" [publi$]="publi$"></app-auspice-card>
+</div>
+
+
+<div class="flex w-full justify-center gap-2" >
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="bnt-pagination">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+        </svg>                         
+    </button>
+
+    <span class="text-lg "><strong>{{ currentPage }}</strong></span>
+
+    <button (click)="nextPage()"  [disabled]="!hasNextPage" class="bnt-pagination">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+        </svg>          
+    </button>
+</div>

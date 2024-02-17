@@ -1,5 +1,10 @@
 <app-carousel class="flex w-full justify-center"></app-carousel>
 
-<div class="block">
-    <app-card-news class="flex-1 " [new$]="news$"></app-card-news>
+<div class="block lg:w-1/5 lg:float-left">
+    <app-card-news class="flex-1" [new$]="news$"></app-card-news>
+</div>
+
+<!-- Componente de auspicios -->
+<div class="block lg:w-1/5 lg:float-right">
+    <app-auspice-card class="flex-1" [publi$]="publi$"></app-auspice-card>
 </div>

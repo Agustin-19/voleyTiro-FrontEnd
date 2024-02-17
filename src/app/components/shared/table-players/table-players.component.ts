@@ -1,35 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IClub } from 'src/app/Interfaces/club.interface';
+import { IPlayer } from 'src/app/Interfaces/player.interface';
 import { IUser } from 'src/app/Interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { ClubService } from 'src/app/services/club.service';
 import { GalletitaService } from 'src/app/services/galletita.service';
 import { GlobalProviderService } from 'src/app/services/globlal-provider.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-clubs',
-  templateUrl: './clubs.component.html',
+  selector: 'app-table-players',
+  templateUrl: './table-players.component.html',
   styles: [
   ]
 })
-export class ClubsComponent implements OnInit {
-  
+export class TablePlayersComponent implements OnInit {
+
+  @Input() players!: IPlayer[];
   public user!: IUser;
   public esAdministrador: boolean = false;
   userSubscription: Subscription = new Subscription();
   logoutSubscription: Subscription = new Subscription();
 
-  public club$!: IClub[];
-  public sede!: string;
-
-  private club!: IClub;
-
-  
   constructor(
-    private _club: ClubService,
     private _galletita: GalletitaService,
     private _user: UserService,
     private _auth: AuthService,
@@ -42,24 +35,6 @@ export class ClubsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getClub();
-    this.buscarSesion();
-  }
-  getClub() {
-    this._club.getAllClub().subscribe((resp : any)=> {
-      this.club$ = resp
-      this.club = this.club$[0]
-
-      this.club.sede.forEach(element => {
-        element.direccion
-        // console.log(element);
-      });
-      
-      // console.log(this.club.sede[0].direccion)
-    });
-  }
-
-  buscarSesion() {
     if (this.haySesion) {
       const cookie: IUser = this._galletita.getCookie('_lg');
 
@@ -98,6 +73,10 @@ export class ClubsComponent implements OnInit {
         })
 
     }
+  }
+
+  editar(playerId: any){
+    this.router.navigate(['/admin/player/forms', playerId])
   }
 
 }

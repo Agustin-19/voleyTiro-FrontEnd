@@ -1,1 +1,129 @@
-<p>games-admin works!</p>
+
+    <form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-3xl body mx-5  mb-9">
+
+        <div class="mt-6 mb-3 py-4 px-6 bg-slate-700 border rounded-t-2xl shadow">
+            <label class="daisy-label">
+                <span class="daisy-label-text mx-3 text-lg text-white">Datos del Partido</span>
+            </label>
+            <div class="daisy-form-control block w-full justify-between">
+                <div class="grid grid-cols-1 gap-1 md:grid-cols-2">
+
+                    <input class="form-input m-2" required [(ngModel)]="game.fecha" name="fecha" type="date"
+                        placeholder="Fecha">
+                    <div class="m-2 text-center flex w-full bg-white rounded-lg ">
+                        <div class="flex m-1 gap-1 justify-between ">
+                            
+                            <p class="my-2"><span class="mx-4 align-middle text-black text-base">Genero: </span></p>
+                            <select name="categoriaGen" [(ngModel)]="selecGen"
+                                    (ngModelChange)="cargarCategory($event)" 
+                                    class="w-10/12 select-propio">
+                                <option disabled selected>Genero</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Mixto">Mixto</option>
+                            </select>
+                        
+                            <select data-te-select-init multiple *ngIf="category" name="categoriaFem"
+                                    [(ngModel)]="seleccionados" multiple class="hidden">
+                            </select>
+                            
+                            <p class="my-2"><span class="mx-4 align-middle text-gray-600 text-base">Categoria:</span></p>
+                            <select  name="category" [(ngModel)]="seleccionados"
+                                (ngModelChange)="enviarCategoria($event)" 
+                                class="w-10/12 select-propio" disabled id="selectCat">
+                                <option disabled selected>Categoria</option>
+                                <option [value]="categoria['_id']" *ngFor="let categoria of category">
+                                    {{categoria.parent}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Equipo local -->
+                <div class=" w-full grid grid-cols-1 md:grid-cols-2 justify-between">
+                    <div class=" block lg:flex m-2 text-center gap-1 rounded-lg justify-between ">
+                        <div class="flex gap-1 my-1 p-1 align-middle bg-white w-full rounded-lg justify-between">
+                            <p class="my-1 px-2"><span
+                                    class="align-middle w-24 text-gray-600 text-base">Local:</span>
+                            </p>
+
+                            <select  [(ngModel)]="clubLocal" name="clubLocal"
+                                (ngModelChange)="selecClubLocal($event)" 
+                                class="w-10/12 p-2 select-propio" id="miSelect" disabled>
+                                <option disabled selected>Club</option>
+                                <option [value]="club['_id']" *ngFor="let club of club$">{{club.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="flex gap-1 my-1 w-full align-middle">
+
+                            <div class="  flex bg-white rounded-lg ">
+                                <p class="my-1 p-1 lg:w-32">
+                                    <span class=" text-gray-600 text-base">Sets Gan:</span>
+                                </p>
+                                <div class="flex p-1 justify-end w-24">
+                                    <input name="SetsLocal" required [(ngModel)]="game.sets_won_loc" type="number"
+                                        placeholder="Max 3"
+                                        class="text-sm w-20 h-10 rounded-md border-gray-300"
+                                        max="3" min="0">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Equipo Visitante  -->
+                    <div class=" block lg:flex m-2 text-center gap-1 rounded-lg justify-between ">
+                        <div class="flex gap-1 my-1 p-1 align-middle bg-white w-full rounded-lg justify-between">
+                            <p class="my-2 px-2">
+                                <span class=" align-middle text-gray-600 text-base">Visitante</span>
+                            </p>
+
+                            <select [(ngModel)]="clubVisit" name="clubVisit"
+                                (ngModelChange)="selecClubVisitante($event)" 
+                                class="w-10/12 select-propio" id="selectVis" disabled>
+                                <option disabled selected>Club</option>
+                                <option [value]="club['_id']" *ngFor="let club of club$">{{club.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="flex gap-1 my-1 w-full align-middle">
+
+                            <div class="  flex bg-white rounded-lg ">
+                                <p class="my-1 p-1 lg:w-32">
+                                    <span class=" text-gray-600 text-base">Sets Gan:</span>
+                                </p>
+                                <div class="flex p-1 justify-end w-24">
+                                    <input name="SetsVisita" required [(ngModel)]="game.set_won_vis" type="number"
+                                        placeholder="Max 3" class="text-sm w-20 h-10 rounded-md border-gray-300"
+                                        max="3" min="0">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- botones -->
+        <div class="p-4 mb-6 bg-slate-700 border rounded-b-2xl w-full shadow justify-center flex">
+            <button type="submit" class="flex p-2 border text-green-300 border-green-300 mx-1 rounded-md h-10">
+                <span class="hidden md:flex">GUARDAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+            </button>
+            <button type="submit" class="flex p-2 border text-red-300 border-red-300 mx-1 rounded-md h-10"
+                [routerLink]="['/home/games']">
+                <span class="hidden md:flex">CANCELAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </form>

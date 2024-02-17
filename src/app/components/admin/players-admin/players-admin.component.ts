@@ -74,7 +74,7 @@ export class PlayersAdminComponent implements OnInit {
     if (this.parametroPlayer && this.parametroPlayer.length >= 5) {
       this._player.getPlayerId(this.parametroPlayer).subscribe((resp) => {
         this.player = resp
-      // console.log(this.player);
+      console.log(this.player);
 
       this.cargarCategoria(this.player.genero);
       this.localidad = this.player.direccion[0].localidad;

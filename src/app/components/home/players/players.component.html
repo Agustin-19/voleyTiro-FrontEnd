@@ -1,3 +1,22 @@
-<div class="w-full bg-transparent flex justify-end">
-    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/player']"></app-btn-add>
+<div class="fixed w-10/12 bg-transparent flex -m-7 justify-end">
+    <app-btn-add *ngIf="haySesion && esAdministrador" [routerLink]="['/admin/player/forms']"></app-btn-add>
 </div>
+
+    <div class="grid grid-cols-1 gap-1 md:grid-cols-2 mt-4">
+        <div class="m-2 text-center flex w-full bg-white rounded-lg">
+            <div class="flex m-1 gap-1 justify-between z-10 ">
+
+                <p class="my-2" for="category"><span class="mx-4 align-middle text-black text-base">Categoria: </span></p>
+                <select id="category"   name="category" [(ngModel)]="categoriaSelect"
+                    class="w-10/12 select-propio "
+                    (ngModelChange)="cambioCat()" >
+                    <option disabled selected >selccionar</option>
+                    <option [ngValue]="category" *ngFor="let category of categoria">
+                        {{category.genero}}: {{category.parent}}
+                    </option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+    <app-table-players [players]="playerFiltrado"></app-table-players>

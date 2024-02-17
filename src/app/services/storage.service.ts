@@ -35,4 +35,16 @@ export class StorageService {
       return null;
     }
   }
+
+  async imgPublicidad(nombre: string, imgBase64: any){
+
+    try {
+      let resp = await this.storageRef.child("publicidad/"+nombre).putString(imgBase64,'data_url');
+      // console.log(resp);
+      return await resp.ref.getDownloadURL();
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
 }

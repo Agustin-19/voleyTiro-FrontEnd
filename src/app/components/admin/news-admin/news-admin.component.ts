@@ -84,10 +84,10 @@ export class NewsAdminComponent implements OnInit {
       return
     };
     this.news.fechaPublicacion = Date()
-    this.RegistrarClub(this.news)
+    this.RegistrarNoticia(this.news)
   }
 
-  RegistrarClub(news: any) {
+  RegistrarNoticia(news: any) {
     this._notiService.createNews(news).subscribe(res => {
       Swal.fire({
         title: 'Correcto',

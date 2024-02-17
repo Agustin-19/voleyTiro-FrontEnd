@@ -1,1 +1,46 @@
-<p>publicity-admin works!</p>
+<form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="rounded-md mx-5 ">
+    <div class="mt-6 mb-3 py-4 px-6 bg-slate-700 border rounded-t-2xl shadow">
+        <div class="daisy-form-control w-full">
+            <input name="titulo" [(ngModel)]="publi.titulo" type="text" placeholder="Titulo"
+                class="form-input  m-2" >
+
+            <div class="block md:flex w-full gap-4 ">
+
+                <div class="m-2 p-2 w-full block  rounded-lg " >
+                    <div class="m-1 px-2" >
+                        <label for="banner" 
+                        class="border p-2 rounded-lg text-lg input-img"
+                        >Imagen</label>
+                        <input type="file" (change)="Image($event)" id="banner" 
+                        accept=".jpg, .png, .jpeg" class="daisy-file-input w-full max-w-xs m-2 hidden" />
+                    </div>
+                    <figure *ngIf="publi.img_url" class=" p-2">
+                        <img [src]="publi.img_url"alt="banner" class="rounded-md  max-h-[100px] " />
+                    </figure> 
+        
+                </div>
+            </div> 
+        </div>
+    </div>
+        
+
+    <!-- movile button  -->
+    <div class="p-4 bg-slate-700 border rounded-b-2xl w-full shadow justify-center flex">
+        <button type="submit" class="flex p-2 border text-green-300 border-green-300 mx-1 rounded-md h-10">
+            <span class="hidden md:flex">PUBLICAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+        </button>
+        <button type="submit" class="flex p-2 border text-red-300 border-red-300 mx-1 rounded-md h-10"
+            [routerLink]="['/home/news']">
+            <span class="hidden md:flex">CANCELAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+</form>

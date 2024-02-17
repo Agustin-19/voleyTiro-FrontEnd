@@ -1,0 +1,41 @@
+<div *ngFor="let datos of gameDatos, let i = index"
+    class="grid grid-cols-1 sm:grid-cols-5 border-card w-full lg:flex-row">
+    <div class="col-span-2 m-1 bg-gray-500 rounded-l-lg ">
+        <p class="text-sm text-slate-900 sm:hidden">Local</p>
+        <div class="pt-4 grid grid-cols-3 gap-2 ">
+            <div class="col-start-1 justify-self-end">
+                <figure class="w-7 "><img [src]="datos.club_loc.perfil_imagen_url" alt="Shoes"
+                        class="rounded-md  max-h-[150px] " />
+                </figure>
+            </div>
+            <div class="text-left col-start-2 col-span-2 ">
+                <p class="  text-lg">{{datos.club_loc.nombre}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="my-1 bg-gray-500  place-items-center pt-2">
+        <p>
+            {{datos.category.parent}} {{datos.category.genero}}
+        </p>
+        <p>
+            {{datos.sets_won_loc}} - VS - {{datos.set_won_vis}}
+        </p>
+        <label *ngIf="haySesion && esAdministrador" (click)="editarPartido(i)"
+        class="input-img border p-1 text-center rounded-lg ">
+        Editar
+    </label>
+    </div>
+    <div class="col-span-2 m-1 bg-gray-500 rounded-r-lg place-items-center">
+        <p class="text-sm text-slate-900 sm:hidden">Visitante</p>
+        <div class="pt-4 grid grid-cols-3 gap-2 ">
+            <div class="col-start-1 col-span-2 text-right">
+                <p class="   text-lg ">{{datos.club_vis.nombre}}</p>
+            </div>
+            <div class="col-start-3 justify-self-start">
+                <figure class="w-7  "><img [src]="datos.club_vis.perfil_imagen_url" alt="Shoes"
+                        class="rounded-md  max-h-[150px] " />
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>

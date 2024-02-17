@@ -14,6 +14,11 @@ import { CardNewsComponent } from 'src/app/components/shared/card-news/card-news
 import { ListNewsComponent } from '../../components/home/news/list-news/list-news.component';
 import { BtnAddComponent } from '../../components/shared/btn-add/btn-add.component';
 import { ClubsComponent } from '../../components/home/clubs/clubs.component';
+import { TablePlayersComponent } from '../../components/shared/table-players/table-players.component';
+import { FormsModule } from '@angular/forms';
+import { ClubCardComponent } from '../../components/shared/club-card/club-card.component';
+import { GameCardComponent } from '../../components/shared/game-card/game-card.component';
+import { AuspiceCardComponent } from '../../components/shared/auspice-card/auspice-card.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +34,15 @@ import { ClubsComponent } from '../../components/home/clubs/clubs.component';
     ListNewsComponent,
     BtnAddComponent,
     ClubsComponent,
+    TablePlayersComponent,
+    ClubCardComponent,
+    GameCardComponent,
+    AuspiceCardComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

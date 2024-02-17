@@ -12,6 +12,7 @@ import { GlobalProviderService } from 'src/app/services/globlal-provider.service
 import { LocalitiesService } from 'src/app/services/localities.service';
 import { StorageService } from 'src/app/services/storage.service';
 import Swal from 'sweetalert2';
+import { Select, initTE } from "tw-elements";
 
 @Component({
   selector: 'app-club-admin',
@@ -82,7 +83,7 @@ export class ClubAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    initTE({ Select });
     this.traerCategorias();
 
     if (this.idClub?.length >= 4) {

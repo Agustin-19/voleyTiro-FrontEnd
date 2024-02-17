@@ -1,40 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IClub } from 'src/app/Interfaces/club.interface';
+import { MenuCategory, ICategory } from 'src/app/Interfaces/categorie.interface';
+import { IGame } from 'src/app/Interfaces/game.interface';
 import { IUser } from 'src/app/Interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { ClubService } from 'src/app/services/club.service';
+import { CategorieService } from 'src/app/services/categorie.service';
 import { GalletitaService } from 'src/app/services/galletita.service';
+import { GameService } from 'src/app/services/game.service';
 import { GlobalProviderService } from 'src/app/services/globlal-provider.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-clubs',
-  templateUrl: './clubs.component.html',
+  selector: 'app-game-card',
+  templateUrl: './game-card.component.html',
   styles: [
   ]
 })
-export class ClubsComponent implements OnInit {
-  
+export class GameCardComponent implements OnInit {
+
+
   public user!: IUser;
   public esAdministrador: boolean = false;
   userSubscription: Subscription = new Subscription();
   logoutSubscription: Subscription = new Subscription();
 
-  public club$!: IClub[];
-  public sede!: string;
 
-  private club!: IClub;
+  @Input() gameDatos!: IGame[];
+  public partidoId!: string;
 
-  
   constructor(
-    private _club: ClubService,
+    private router: Router,
     private _galletita: GalletitaService,
     private _user: UserService,
     private _auth: AuthService,
     private _globalProvider: GlobalProviderService,
-    private router: Router,
   ) { }
 
   get haySesion() {
@@ -42,21 +42,15 @@ export class ClubsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getClub();
-    this.buscarSesion();
+    this.buscarSesion()
   }
-  getClub() {
-    this._club.getAllClub().subscribe((resp : any)=> {
-      this.club$ = resp
-      this.club = this.club$[0]
 
-      this.club.sede.forEach(element => {
-        element.direccion
-        // console.log(element);
-      });
-      
-      // console.log(this.club.sede[0].direccion)
-    });
+  editarPartido(idGame: any){
+    const partido = this.gameDatos[idGame]as any;
+    this.partidoId = partido['_id'];
+    this.router.navigate(['/admin/game/forms', this.partidoId])
+    // console.log(partido);
+    
   }
 
   buscarSesion() {
@@ -97,7 +91,7 @@ export class ClubsComponent implements OnInit {
           }
         })
 
-    }
+    } 
   }
 
 }

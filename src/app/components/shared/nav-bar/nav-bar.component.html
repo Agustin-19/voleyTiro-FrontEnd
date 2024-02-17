@@ -33,6 +33,12 @@
                     CLUBES
                 </a>
             </li>
+            <li *ngIf="haySesion && esAdministrador" 
+            [routerLink]="['/admin/publicity']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    AUSPICIOS
+                </a>
+            </li>
         </ul>
     </div>
 </div>
