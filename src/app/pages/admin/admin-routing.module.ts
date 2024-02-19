@@ -7,6 +7,7 @@ import { NewsAdminComponent } from 'src/app/components/admin/news-admin/news-adm
 import { PlayersAdminComponent } from 'src/app/components/admin/players-admin/players-admin.component';
 import { PublicityAdminComponent } from 'src/app/components/admin/publicity-admin/publicity-admin.component';
 import { TimetebleAdminComponent } from 'src/app/components/admin/timeteble-admin/timeteble-admin.component';
+import { GalleryAdminComponent } from 'src/app/components/admin/gallery-admin/gallery-admin.component';
 
 const ADMIN_ROUTES : Routes = [
   { path: '', component: AdminComponent },
@@ -87,6 +88,22 @@ const ADMIN_ROUTES : Routes = [
         path: 'timetable',
         component: TimetebleAdminComponent,
         data: {title: 'Horario'},
+      },
+      {
+        path: 'gallery',
+        children:[
+          {path:'', redirectTo: 'forms', pathMatch: 'full'},
+          {
+            path: 'forms',
+            component: GalleryAdminComponent,
+            data: {title: 'Agregar'},
+          },
+          {
+            path: 'forms/:galleryId',
+            component: GalleryAdminComponent,
+            data: {title: 'Editar'}
+          }
+        ]
       }
     ]
   },

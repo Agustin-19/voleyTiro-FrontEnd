@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ClubCardComponent } from '../../components/shared/club-card/club-card.component';
 import { GameCardComponent } from '../../components/shared/game-card/game-card.component';
 import { AuspiceCardComponent } from '../../components/shared/auspice-card/auspice-card.component';
+import { TableHourComponent } from '../../components/shared/table-hour/table-hour.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuspiceCardComponent } from '../../components/shared/auspice-card/auspi
     ClubCardComponent,
     GameCardComponent,
     AuspiceCardComponent,
+    TableHourComponent,
   ],
   imports: [
     CommonModule,

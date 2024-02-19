@@ -56,5 +56,14 @@
 }
 
 
+// intento styles de tabla
+
+td {
+    @apply text-center text-white text-sm border border-white bg-gray-800
+}
+th {
+    @apply text-white text-sm border border-white bg-black
+}
+
 option { color: black; background-color: white; border: none; }
 option:hover { color: black; background-color: gray; }

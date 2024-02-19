@@ -39,6 +39,18 @@
                     AUSPICIOS
                 </a>
             </li>
+            <li *ngIf="haySesion && esAdministrador" 
+            [routerLink]="['/admin/timetable']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    HORARIOS
+                </a>
+            </li>
+            <li *ngIf="haySesion && esAdministrador" 
+            [routerLink]="['/admin/gallery']" routerLinkActive="router-link-active">
+                <a class="btn-navbar">
+                    galleria
+                </a>
+            </li>
         </ul>
     </div>
 </div>

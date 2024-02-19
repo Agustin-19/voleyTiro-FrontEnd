@@ -1,0 +1,34 @@
+<table class="w-full mt-6">
+    <thead>
+        <tr>
+            <th>Genero</th>
+            <th>Categoria</th>
+            <th>Profesor</th>
+            <th>Hora</th>
+            <th>Dias</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hour of hour$">
+            <td>
+                {{hour.category.genero}}
+            </td>
+            <td>
+                {{ hour.category.parent }}
+            </td>
+            <td>
+                {{ hour.profesor }}
+            </td>
+            <td>
+                {{ hour.hora }}
+            </td>
+            <td>
+                <ul class="flex-auto">
+                    <li *ngFor="let day of hour.dias">
+                        {{ day }}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

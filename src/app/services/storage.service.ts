@@ -47,4 +47,17 @@ export class StorageService {
       return null;
     }
   }
+
+  async imgGaleria(nombre: string, imgBase64: any){
+
+    try {
+      let resp = await this.storageRef.child("galeria/"+nombre).putString(imgBase64,'data_url');
+      // console.log(resp);
+      return await resp.ref.getDownloadURL();
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
 }

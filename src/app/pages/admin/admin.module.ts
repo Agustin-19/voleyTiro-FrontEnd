@@ -10,6 +10,7 @@ import { NewsAdminComponent } from '../../components/admin/news-admin/news-admin
 import { TimetebleAdminComponent } from '../../components/admin/timeteble-admin/timeteble-admin.component';
 import { PublicityAdminComponent } from '../../components/admin/publicity-admin/publicity-admin.component';
 import { FormsModule } from '@angular/forms';
+import { GalleryAdminComponent } from '../../components/admin/gallery-admin/gallery-admin.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     GamesAdminComponent,
     NewsAdminComponent,
     TimetebleAdminComponent,
-    PublicityAdminComponent
+    PublicityAdminComponent,
+    GalleryAdminComponent
   ],
   imports: [
     CommonModule,

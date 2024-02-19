@@ -1,10 +1,18 @@
 <app-carousel class="flex w-full justify-center"></app-carousel>
 
-<div class="block lg:w-1/5 lg:float-left">
-    <app-card-news class="flex-1" [new$]="news$"></app-card-news>
-</div>
-
-<!-- Componente de auspicios -->
-<div class="block lg:w-1/5 lg:float-right">
-    <app-auspice-card class="flex-1" [publi$]="publi$"></app-auspice-card>
+<div class=" grid grid-cols-5 ">
+    <!-- noticias -->
+    <div class="col-span-1 col-start-1">
+        <app-card-news class="flex-1" [new$]="news$"></app-card-news>
+    </div>
+    
+    <!-- horarios -->
+    <div class="col-start-2 col-span-3 mt-5  ">
+        <app-table-hour class="w-full" [hour$]="hour$"></app-table-hour>
+    </div>
+    
+    <!-- Componente de auspicios -->
+    <div class="col-start-5 col-span-1">
+        <app-auspice-card class="flex-1" [publi$]="publi$"></app-auspice-card>
+    </div>
 </div>
